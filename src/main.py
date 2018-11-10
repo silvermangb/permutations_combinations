@@ -4,6 +4,8 @@ Created on May 31, 2015
 @author: Greg Silverman
 '''
 
+import sys
+
 def comp(a,b):
     return a<b 
 
@@ -32,12 +34,15 @@ def myPermu(l,d,r,e):
 def myCombo(l,d,r,e):
     return f(l,d,r,e,lambda a,b:a<b)
 
-l = [i+1 for i in xrange(5)]
+N = int(sys.argv[1])
+l = [i for i in xrange(N)]
 r = [None]*len(l)
 
 d = -1
-e = len(l)-1
+e = len(l)
 h = myPermu(l, d, r, e)
 for i,j in enumerate(h):
-    pass 
-    print i+1,j
+    if j[0]==0:
+        j[0] = ' '
+    v = ''.join([str(k) for k in j])
+    print '% 9d'%(i+1),''.join([str(k) for k in j])
